@@ -11,8 +11,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (typeof id !== "string") return;
 
-    await db
-      .getById(id)
+    db.getById(id)
       .then((product) => {
         res.status(200).json(product);
       })
