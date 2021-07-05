@@ -5,17 +5,25 @@ const products = fakeProducts(5);
 
 class Database {
   async getAll(): Promise<Product[]> {
-    return Promise.resolve(products);
+    const response = Object.entries(products).map(([id, value]) => ({
+      id,
+      ...value,
+    }));
+
+    return Promise.resolve(response);
   }
 
   async getById(id: string): Promise<Product> {
-    const product = products.find((product) => product.id === id);
+    const product = products[id];
 
     if (!product) {
       return Promise.reject(`[DATABASE] id: "${id}" not found.`);
     }
 
-    return Promise.resolve(product);
+    return Promise.resolve({
+      id,
+      ...product,
+    });
   }
 }
 
