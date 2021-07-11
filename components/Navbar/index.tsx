@@ -2,30 +2,38 @@ import { Fragment } from "react";
 
 // next
 import Link from "next/link";
-import { useRouter } from "next/router";
-
-// fixtures
-import { navigation } from "./fixtures";
 
 // styles
 import styles from "./styles";
 
-function Navbar() {
-  const { pathname } = useRouter();
+// components
+import { Icons, Wrapper } from "components";
 
+// constants
+import { Routes } from "@constants";
+
+function Navbar() {
   return (
     <Fragment>
       <header>
         <nav>
-          <ul>
-            {navigation.map(({ href, text }) => (
-              <li className={pathname === href ? "active" : ""} key={text}>
-                <Link href={href}>
-                  <a>{text}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Wrapper>
+            <div className="content">
+              <Link href={Routes.HOME}>
+                <a className="item">
+                  <Icons.Store width="40" />
+                  <span>Store</span>
+                </a>
+              </Link>
+
+              <Link href={Routes.CART}>
+                <a className="item">
+                  <Icons.Cart width="40" />
+                  <small>(0)</small>
+                </a>
+              </Link>
+            </div>
+          </Wrapper>
         </nav>
       </header>
       <style jsx>{styles}</style>

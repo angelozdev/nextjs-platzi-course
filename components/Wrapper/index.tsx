@@ -1,11 +1,16 @@
 import { PropsWithChildren } from "react";
+import classnames from "classnames";
 
 // styles
 import styles from "./styles";
 
-function Wrapper({ children }: PropsWithChildren<{}>) {
+interface Props {
+  withPadding?: boolean;
+}
+
+function Wrapper({ children, withPadding = true }: PropsWithChildren<Props>) {
   return (
-    <div>
+    <div className={classnames("container", { withPadding })}>
       {children}
       <style jsx>{styles}</style>
     </div>
