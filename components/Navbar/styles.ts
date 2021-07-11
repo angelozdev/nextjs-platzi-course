@@ -1,28 +1,29 @@
 import { css } from "styled-jsx/css";
 
 const styles = css`
-  ul {
-    list-style: none;
-    padding: 0;
+  header {
+    box-shadow: 0px 0.1rem 0.5rem -0.25rem rgba(0, 0, 0, 0.3);
+  }
+
+  .content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+  }
+
+  .item {
+    display: flex;
+    padding: 0.25rem 1rem;
     align-items: center;
-    margin: 0;
+    transition: ease 300ms background;
   }
 
-  li {
-    flex-grow: 1;
-    text-align: center;
+  .item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
-  li.active {
-    background-color: #efefefef;
-  }
-
-  li a {
-    display: inline-block;
-    padding: 1rem 2rem;
-    width: 100%;
+  .item span {
+    font-size: 1rem;
+    font-weight: 500;
   }
 `;
 
