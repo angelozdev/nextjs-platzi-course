@@ -5,6 +5,9 @@ import axios from "axios";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
+// views
+import { Home } from "views";
+
 // types
 import { Product } from "types/product";
 
@@ -12,7 +15,7 @@ interface Props {
   products: Product[];
 }
 
-function Home({ products }: Props) {
+function Main({ products }: Props) {
   return (
     <Fragment>
       <Head>
@@ -21,11 +24,7 @@ function Home({ products }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>{product.name}</li>
-        ))}
-      </ul>
+      <Home products={products} />
     </Fragment>
   );
 }
@@ -53,4 +52,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     });
 };
 
-export default Home;
+export default Main;
