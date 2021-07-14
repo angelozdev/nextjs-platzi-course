@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 // next
 import { GetStaticProps } from "next";
@@ -42,8 +42,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         },
       };
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((error: AxiosError) => {
+      console.error(error.response?.data || error.message);
       return {
         props: {
           products: [],

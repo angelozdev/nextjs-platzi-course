@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import styles from "styles/globals";
 
 // components
@@ -11,5 +11,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       <style jsx>{styles}</style>
     </Layout>
   );
+}
+
+export function reportWebVitals({ name, value }: NextWebVitalsMetric) {
+  if (process.env.NODE_ENV === "development") {
+    console.log(
+      `%c[Web Vitals] ${name}: ${value.toFixed(0)}ms`,
+      "color: #00828b;"
+    );
+  }
 }
 export default MyApp;

@@ -14,7 +14,7 @@ const fakeProduct = (): Products => {
         hardiness: `${faker.datatype.number({ max: 10, min: -10 })} °C`,
         shape: faker.commerce.color(),
       },
-      image: faker.image.imageUrl(500, 500, "tech", true),
+      image: `https://source.unsplash.com/500x500?${faker.commerce.productAdjective()}`,
       name: faker.commerce.productName(),
       price: Number(faker.commerce.price(10, 1000, 2)),
       sku: faker.finance.account(),
