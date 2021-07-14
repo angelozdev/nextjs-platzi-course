@@ -13,7 +13,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     db.getById(id)
       .then((product) => {
-        res.status(200).json(product);
+        res.status(200).json({
+          data: product,
+          status: 200,
+          error: null,
+        });
       })
       .catch((error) => {
         res.status(404).json({
